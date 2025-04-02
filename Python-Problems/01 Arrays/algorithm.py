@@ -11,6 +11,7 @@ pop() -> Removes the element at the specified position
 remove() -> Removes the first item with the specified value
 reverse() -> Reverses the order of the list
 sort() -> Sorts the list
+Subset/Slicing -> array[start:end] Always first index is included and last is excluded
 """
 
 print("Arrays are used to store multiple values in one single variable")
@@ -74,6 +75,14 @@ cars.sort(reverse=True)
 print(f"Sort array in DESCENDING order -> cars.sort(reverse=True): {cars}")
 cars.reverse()
 print(f"Sort array in DESCENDING order -> cars.reverse(): {cars}")
+print("=========================================================================")
+
+print("Subset/Slicing -> array[start:end]")
+print(f"Array before subset -> {cars}")
+print(f"In Slicing - Always FIRST INDEX is INCLUSIVE and LAST IS EXCLUDED(INDEX 5 is EXCLUDED) -> cars[1:5]: {cars[1:5]}")
+print(f"In Slicing - From SELECTED INDEX(INCLUSIVE) to END -> cars[1:]: {cars[1:]}")
+print(f"In Slicing - From START to SELECTED INDEX(EXCLUDED) index 4 is EXLUDED -> cars[:4]: {cars[:4]}")
+print(f"In Slicing - From length of cars to end -> len(cars):: {len(cars):}")
 print("=========================================================================")
 
 print("Clear an array")
