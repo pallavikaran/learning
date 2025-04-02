@@ -1,0 +1,10 @@
+1. Sorting:
+    A. QuickSort: Efficient average-case time complexity (O(nlog n))
+    B. MergeSort: Stable sort, useful when order matters (O(nlog n))
+
+2. Searching:
+    A. Binary Search: Fast search in sorted arrays (O(log n))
+
+3. Two Pointers: In-place manipulation, often for sorted arrays (e.g., removing duplicates)
+
+4. Sliding Window: Subarray problems, finding maximum/minimum within a window

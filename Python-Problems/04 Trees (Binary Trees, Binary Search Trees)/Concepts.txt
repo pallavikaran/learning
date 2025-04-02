@@ -1,0 +1,7 @@
+1. Traversal: Inorder, Preorder, Postorder (recursive and iterative)
+
+2. Searching: Find a node with a given value (especially in BSTs)
+
+3. BFS: Breadth First Search
+
+4. DFS: Depth First Search

@@ -1,0 +1,7 @@
+1. Traversal: Iterate through the list, understand the node structure
+
+2. Insertion/Deletion: At beginning, end, or at a specific position
+
+3. Reversal: In-place reversal, recursive and iterative approaches
+
+4. Cycle Detection: Floyd's Tortoise and Hare algorithm

@@ -1,0 +1,5 @@
+1. Insertion/Searching:
+
+2. For words/prefixes
+
+3. Autocompletion: Using a trie for word suggestions

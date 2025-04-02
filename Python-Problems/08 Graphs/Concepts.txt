@@ -1,0 +1,8 @@
+1. Traversal: Breadth-First Search (BFS)
+
+2. Depth-First Search (DFS)
+
+3. Shortest Path: Dijkstra's Algorithm
+
+4. Cycle Detection: DFS
+
