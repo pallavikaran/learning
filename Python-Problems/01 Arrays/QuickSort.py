@@ -19,7 +19,7 @@ def partition(arr, low, high):
             i += 1
             swap(arr, i, j)
 
-    # for pivot
+    # adjust pivot to right position
     swap(arr, i + 1, high)
     return i + 1
 
@@ -29,7 +29,7 @@ def swap(arr, i, j):
 
 def quick_sort(arr, low, high):
     if low < high:
-        part = partition(arr, low, high)
+        part = partition(arr, low, high) # divide array in half based on right most element used as pivot
 
         quick_sort(arr, low, part - 1)
         quick_sort(arr, part + 1, high)
