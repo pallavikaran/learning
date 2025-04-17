@@ -6,6 +6,7 @@ Time Complexity:
     Worst Case: O(n log n), When the array is sorted in reverse order.
 Auxiliary Space: O(n), Additional space is required for the temporary array (result) used during merging
 """
+# Using original list to modify than having extra result list
 def mergeTwoSortedLists(original_arr, prev_idx_merged_subarr, left_arr, right_arr):
     # 01MergeTwoSortedLists.py
     left_arr_idx = 0
