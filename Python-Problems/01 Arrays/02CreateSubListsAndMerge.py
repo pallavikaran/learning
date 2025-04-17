@@ -11,7 +11,7 @@ Time Complexity = θ (m + n) where m = length(left_arr) and n = length(right_arr
 Auxiliary Space: O(m + n), Additional space is required for the temporary array (result) used during merging
 """
 
-def createSubListsAndMerge(arr, low, mid, high):
+def create_sub_lists_and_merge(arr, low, mid, high):
 
     left_arr = arr[low: mid+1] # subbing the array, left to : is included and right is not included len = 4 (0, 1, 2, 3)
     right_arr = arr[mid + 1 :high + 1] # len = 3 (4, 5, 6)
@@ -44,11 +44,11 @@ arr = [10, 15, 20, 40, 8, 11, 55]
 low = 0
 mid = 3
 high = 6
-print(createSubListsAndMerge (arr, low, mid, high))
+print(create_sub_lists_and_merge (arr, low, mid, high))
 
 # Sort between [15, 20, 40, 8, 11]
 arr = [10, 15, 20, 40, 8, 11, 55]
 low = 1
 mid = 3
 high = 5
-print(createSubListsAndMerge (arr, low, mid, high))
+print(create_sub_lists_and_merge (arr, low, mid, high))

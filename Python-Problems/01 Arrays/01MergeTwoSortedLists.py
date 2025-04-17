@@ -2,7 +2,7 @@
 Explanation - Video at bottom = https://www.geeksforgeeks.org/merge-sort/?ref=header_outind
 Time Complexity: O(len(arr1), len(arr2))
 """
-def mergeTwoSortedLists(arr1, arr2):
+def merge_two_sorted_lists(arr1, arr2):
     arr1_indx = 0
     arr2_indx = 0
     result = []
@@ -28,4 +28,4 @@ def mergeTwoSortedLists(arr1, arr2):
 
 arr1 = [1, 2, 7, 10]
 arr2 = [4,7,9]
-print(mergeTwoSortedLists(arr1, arr2))
+print(merge_two_sorted_lists(arr1, arr2))
