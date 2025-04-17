@@ -29,7 +29,7 @@ def swap(arr, i, j):
 
 def quick_sort(arr, low, high):
     if low < high:
-        part = partition(arr, low, high) # divide array in half based on right most element used as pivot
+        part = partition(arr, low, high) # Align pivot element in right place,then divide array in half based on pivot
 
         quick_sort(arr, low, part - 1)
         quick_sort(arr, part + 1, high)
