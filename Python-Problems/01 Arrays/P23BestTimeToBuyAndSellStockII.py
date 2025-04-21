@@ -24,3 +24,25 @@ Constraints:
 1 <= prices.length <= 3 * 104
 0 <= prices[i] <= 104
 """
+
+
+def max_profit(prices):
+    profit = 0
+
+    for i in range(0, len(prices) - 1):
+        if prices[i] < prices[i + 1]:
+            profit += prices[i + 1] - prices[i]
+
+    return profit
+
+
+prices = [7,1,5,3,6,4]
+print(max_profit(prices))
+
+
+prices = [1,2,3,4,5]
+print(max_profit(prices))
+
+prices = [7,6,4,3,1]
+print(max_profit(prices))
+
