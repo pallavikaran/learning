@@ -45,4 +45,3 @@ print(max_profit(prices))
 
 prices = [7,6,4,3,1]
 print(max_profit(prices))
-
