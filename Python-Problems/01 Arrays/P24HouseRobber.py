@@ -108,20 +108,20 @@ def rob_sliding_window(nums):
     :type nums: List[int]
     :rtype: int
     """
-    prev_house_loot_one = 0 # Max loot up to house i-1
-    prev_house_loot_two = 0 # Max loot up to house i-1
+    prev_house_loot_one = 0  # Max loot up to house i-1
+    prev_house_loot_two = 0  # Max loot up to house i-1
 
     # Sliding Window: prev_house_loot_two -> prev_house_loot_one -> current house
 
     for num in nums:
-        take_house = num + prev_house_loot_two # alteranate house loot only
+        take_house = num + prev_house_loot_two  # alteranate house loot only
         skip_house = prev_house_loot_one
-        temp_max = max(take_house, skip_house) # max money one can rob
+        temp_max = max(take_house, skip_house)  # max money one can rob
 
         prev_house_loot_two = prev_house_loot_one
-        prev_house_loot_one = temp_max # max money one can rob
+        prev_house_loot_one = temp_max  # max money one can rob
 
-    return prev_house_loot_one # max money one can rob
+    return prev_house_loot_one  # max money one can rob
 
 
 nums = [1,2,3,1]
