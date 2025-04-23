@@ -81,11 +81,52 @@ print("Subset/Slicing -> array[start:end]")
 print(f"Array before subset -> {cars}")
 print(f"In Slicing - Always FIRST INDEX is INCLUSIVE and LAST IS EXCLUDED(INDEX 5 is EXCLUDED) -> cars[1:5]: {cars[1:5]}")
 print(f"In Slicing - From SELECTED INDEX(INCLUSIVE) to END -> cars[1:]: {cars[1:]}")
-print(f"In Slicing - From START to SELECTED INDEX(EXCLUDED) index 4 is EXLUDED -> cars[:4]: {cars[:4]}")
+print(f"In Slicing - From START to SELECTED INDEX(EXCLUDED) index 4 is EXCLUDED -> cars[:4]: {cars[:4]}")
 print(f"In Slicing - From length of cars to end -> len(cars):: {len(cars):}")
+print("=========================================================================")
+
+print("Navigate last element in single set array")
+print(f"Array -> {cars}")
+print(f"Last element in single set array-> cars.clear(): {cars[-1]}")
 print("=========================================================================")
 
 print("Clear an array")
 cars.clear()
 print(f"Clear an array-> cars.clear(): {cars}")
 print("=========================================================================")
+
+"""
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+Row 0: [1, 2, 3] -> index 0
+Row 1: [4, 5, 6] -> index 1
+Row 2: [7, 8, 9] <- index 2, also index -1
+
+Access Pattern	Meaning	                Value
+matrix[0][0]	First row, first col	1
+matrix[1][2]	Second row, third col	6
+matrix[2][1]	Third row, second col	8
+matrix[-1][-1]	Last row, last col 🏁	9
+matrix[-1][0]	Last row, first col	    7
+matrix[0][-1]	First row, last col	    3
+"""
+print("2D Array")
+matrix = [[5, 2], [1, 9], [3, 4]]
+print(f"2D Array: {matrix}")
+matrix.sort(key=lambda x: x[0])
+print(f"2D Array sorted by first element in each row matrix.sort(key=lambda x: x[0]): {matrix}")
+matrix.sort(key=lambda x: x[1])
+print(f"2D Array sorted by second element in each row matrix.sort(key=lambda x: x[1]): {matrix}")
+print(f"2D Array: {matrix}")
+print(f"2D Array sorted access element matrix[-1]: {matrix[-1]}")
+print(f"2D Array sorted access element matrix[-1][0]: {matrix[-1][0]}")
+print(f"2D Array sorted access element matrix[-1][1]: {matrix[-1][1]}")
+print(f"2D Array sorted access element matrix[1][-1]: {matrix[1][-1]}")
+print(f"2D Array sorted access element matrix[1][-1]: {matrix[0][-1]}")
+print(f"2D Array sorted access element matrix[-1][-1]: {matrix[-1][-1]}")
+print("=========================================================================")
+
