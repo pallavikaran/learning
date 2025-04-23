@@ -41,7 +41,6 @@ import sys
 
 
 class min_stack(object):
-
     def __init__(self):
         self.stack = []
 
@@ -51,7 +50,6 @@ class min_stack(object):
         :rtype: None
         """
         self.stack.append(val)
-
 
     def pop(self):
         """
@@ -67,7 +65,6 @@ class min_stack(object):
         """
         return self.stack[len(self.stack) - 1]
 
-
     def getMin(self):
         """
         :rtype: int
@@ -78,7 +75,6 @@ class min_stack(object):
                 temp = num
 
         return temp
-
 
 
 obj = min_stack()
@@ -151,6 +147,7 @@ class min_stack_using_two_stack(object):
         :rtype: int
         """
         return self.min_stack[-1]
+
 
 obj_min_stack_using_two_stack = min_stack_using_two_stack()
 obj_min_stack_using_two_stack.push(-2)
