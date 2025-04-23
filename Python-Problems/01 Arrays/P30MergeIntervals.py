@@ -24,8 +24,8 @@ def merge(intervals):
     :rtype: List[List[int]]
     """
 
-    # sort all intervels
-    intervals.sort(key=lambda x: x[0]) # Sort by first element in each row
+    # sort all intervals
+    intervals.sort(key=lambda x: x[0])  # Sort by first element in each row
     merged = []
 
     for interval in intervals:
@@ -39,8 +39,8 @@ def merge(intervals):
     return merged
 
 
-intervals = [[1,3],[2,6],[8,10],[15,18]]
+intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
 print(merge(intervals))
 
-intervals = [[1,4],[4,5]]
+intervals = [[1, 4], [4, 5]]
 print(merge(intervals))

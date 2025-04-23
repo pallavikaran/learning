@@ -10,6 +10,7 @@ Worst Case: (O(n²)), Occurs when the smallest or largest element is always chos
 Auxiliary Space: O(n), due to recursive call stack
 """
 
+
 def get_lomuto_partition(arr, low, high):
     pivot = arr[high] # taking last element as pivot element
     i = low - 1 # pointer one
@@ -23,8 +24,10 @@ def get_lomuto_partition(arr, low, high):
 
     return i+ 1 # return correct pivot position
 
+
 def swap(arr, j, i):
     arr[i], arr[j] = arr[j], arr[i]
+
 
 def quick_sort(arr, low, high):
     if low < high: # list is larger than 1 element hence there is point in sorting
@@ -34,6 +37,7 @@ def quick_sort(arr, low, high):
         pivot_index = get_lomuto_partition(arr, low, high) # Put pivot element in right place
         quick_sort(arr, low, pivot_index - 1) # elements less than pivot element
         quick_sort(arr, pivot_index + 1, high) # elements more than pivot element
+
 
 arr = [10, 7, 3, 9, 1, 5]
 n = len(arr)
