@@ -30,7 +30,7 @@ def merge(intervals):
 
     for interval in intervals:
         # check if incoming interval's left val is more than merged's right value
-        if not merged or interval[0] > merged[-1][1]: # right interval in intervals column = 1
+        if not merged or interval[0] > merged[-1][1]:  # right interval in intervals column = 1
             merged.append(interval)
         else:
             # interval[1] -> right value of interval
