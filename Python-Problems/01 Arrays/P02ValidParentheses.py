@@ -25,19 +25,22 @@ Constraints:
 s consists of parentheses only '()[]{}'.
 """
 
+
 def is_valid(s: str) -> bool:
     valid_parentheses_map = {'(': ')', '[': ']', '{': '}'}
     temp_lst = []
     for char in s:
         if char in valid_parentheses_map.keys():
-            temp_lst.append(char) # Push
+            temp_lst.append(char)  # Push
         elif char in valid_parentheses_map.values():
             if len(temp_lst) > 0 and char == valid_parentheses_map.get(temp_lst.pop()):
                 continue
-            else: return False
+            else:
+                return False
         else:
             return False
     return True
+
 
 print("()")
 print(is_valid("()"))
