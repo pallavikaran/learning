@@ -15,6 +15,7 @@ Constraints:
 s[i] is a printable ascii character.
 """
 
+
 def reverse_string(s):
     """
     :type s: List[str]
@@ -29,6 +30,7 @@ def reverse_string(s):
         right_indx -= 1
 
     return s
+
 
 s = ["h","e","l","l","o"]
 print(reverse_string(s))

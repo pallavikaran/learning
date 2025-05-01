@@ -16,6 +16,7 @@ n == nums.length
 -109 <= nums[i] <= 109
 """
 
+
 def majority_element(nums):
     """
     :type nums: List[int]

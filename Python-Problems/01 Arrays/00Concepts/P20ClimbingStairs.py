@@ -24,6 +24,8 @@ This is because we can reach step n by either taking one step from (n-1) or (n-2
 Note that the case where we take 2 steps from (n-2) to (n) is also included in this because we will have to take one step from (n-1) in this case.
 The time complexity of this solution is O(n), where n is the number of steps.
 """
+
+
 def climb_stairs(n):
     """
     :type n: int

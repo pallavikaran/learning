@@ -21,6 +21,7 @@ nums is sorted in ascending order.
 This is a classic binary serach problem since the list/array is ordered
 """
 
+
 def binary_search(nums, target, low, high):
     if low <= high:
         mid = (high + low) // 2

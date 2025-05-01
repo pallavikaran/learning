@@ -23,6 +23,8 @@ Follow up: If you have figured out the O(n) solution, try coding another solutio
 """
 To solve this problem, we can use Kadane's algorithm.
 """
+
+
 def max_sub_array_sum(nums):
     """
     :type nums: List[int]
@@ -40,6 +42,7 @@ def max_sub_array_sum(nums):
         max_subarray_sum = max(max_subarray_sum, curr_subarray_sum)
 
     return max_subarray_sum
+
 
 nums = [-2,1,-3,4,-1,2,1,-5,4]
 print(max_sub_array_sum(nums))

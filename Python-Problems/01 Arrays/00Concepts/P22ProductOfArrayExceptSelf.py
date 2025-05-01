@@ -19,6 +19,7 @@ The input is generated such that answer[i] is guaranteed to fit in a 32-bit inte
 Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
 """
 
+
 def product_except_self(nums):
     """
     :type nums: List[int]
@@ -45,6 +46,7 @@ def product_except_self(nums):
             return product_except_self_arr
 
     return product_except_self_arr
+
 
 nums = [1,2,3,4]
 print(product_except_self(nums))
