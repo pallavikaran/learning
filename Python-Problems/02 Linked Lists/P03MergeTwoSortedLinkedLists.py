@@ -94,7 +94,7 @@ list2 = LinkedList()
 list2.insert_at_end(1)
 list2.insert_at_end(3)
 list2.insert_at_end(4)
-result12 = merge_two_lists(list1.head, list2.head) # That means it's expecting the head node of a linked list, not the LinkedList object itself
+result12 = merge_two_lists(list1.head, list2.head)  # That means it's expecting the head node of a linked list, not the LinkedList object itself
 print_linked_list(result12)
 
 list3 = LinkedList()
