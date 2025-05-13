@@ -87,28 +87,40 @@ fast = 1
 ✅ At this point: slow == fast, and the cycle is detected.
 """
 
+
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 
-class Solution(object):
-    def hasCycle(self, head):
-        """
-        :type head: ListNode
-        :rtype: bool
-        """
-        if head is None:
-            return False
-        else:
-            slow_ptr = head  # moves by incrementing by 1 i.e. head.next
-            fast_ptr = head  # moves by incrementing by 2 i.e. head.next.next
-            while fast_ptr is not None and fast_ptr.next is not None: # Checking that fast_ptr has nodes to increment/check
-                slow_ptr = slow_ptr.next
-                fast_ptr = fast_ptr.next.next
-
-                if slow_ptr == fast_ptr: # if the nodes of the linked list match that means cycle is detected
-                    return True
+def has_cycle(head):
+    """
+    :type head: ListNode
+    :rtype: bool
+    """
+    if head is None:
         return False
+    else:
+        slow_ptr = head  # moves by incrementing by 1 i.e. head.next
+        fast_ptr = head  # moves by incrementing by 2 i.e. head.next.next
+        while fast_ptr is not None and fast_ptr.next is not None: # Checking that fast_ptr has nodes to increment/check
+            slow_ptr = slow_ptr.next
+            fast_ptr = fast_ptr.next.next
+
+            if slow_ptr == fast_ptr: # if the nodes of the linked list match that means cycle is detected
+                return True
+    return False
+
+
+head = ListNode(3)
+head.next = ListNode(2)
+head.next.next = ListNode(0)
+head.next.next.next = ListNode(4)
+print(has_cycle(head))
+
+
+head1 = ListNode(1)
+head1.next = ListNode(2)
+print(has_cycle(head1))
