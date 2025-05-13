@@ -25,6 +25,22 @@ remove_node(): Deletes a node by taking data as an argument. It traverses the li
 sizeOfLL(): Returns the current size of the linked list.
 printLL(): Traverses the linked list and prints the data of each node. printLL() method ensures the last node is printed by adding a print(current_node.data) after the loop ends. This handles the edge case of printing the last node.
 """
+"""
+slow is a node. slow.next is the pointer to the node next to slow
+TO UPDATE A LINKED LIST UPDATE node.next i.e. slow.next
+TO TRAVERSE A LINKED LIST use node = node.next i.e slow = slow.next, traversing to next element
+
+Key Difference Between the Two Operations:
+slow = slow.next:
+    This operation is for traversing the list.
+    It does not modify the list.
+    It advances the pointer to the next node.
+
+slow.next = slow.next.next:
+    This operation is for modifying the list.
+    It removes the node that slow.next is pointing to.
+    It skips over the node by pointing the next pointer of the previous node to the node after the one being removed.
+"""
 
 
 # Create a Linked List
