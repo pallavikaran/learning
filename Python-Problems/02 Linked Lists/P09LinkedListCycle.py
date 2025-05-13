@@ -114,13 +114,30 @@ def has_cycle(head):
     return False
 
 
-head = ListNode(3)
-head.next = ListNode(2)
-head.next.next = ListNode(0)
-head.next.next.next = ListNode(4)
-print(has_cycle(head))
+# Create nodes
+node1 = ListNode(3)
+node2 = ListNode(2)
+node3 = ListNode(0)
+node4 = ListNode(-4)
+# Link them
+node1.next = node2
+node2.next = node3
+node3.next = node4
+node4.next = node2  # Create the cycle here
+# node1 is the head of the list
+print(has_cycle(node1))
+
+# Create nodes
+node11 = ListNode(1)
+node22 = ListNode(2)
+# Link them
+node11.next = node22
+node22.next = node11 # Create the cycle here
+# node11 is the head of the list
+print(has_cycle(node11))
 
 
-head1 = ListNode(1)
-head1.next = ListNode(2)
-print(has_cycle(head1))
+# Create nodes
+node111 = ListNode(1)
+# node111 is the head of the list
+print(has_cycle(node111))
