@@ -161,11 +161,7 @@ class LinkedList:
             print("Node with the given data not found")
 
 
-
-
-
-
-    #  create a new linked list. One object is created in this named llist and all the operations are performed in this object
+#  create a new linked list. One object is created in this named llist and all the operations are performed in this object
 llist = LinkedList()
 llist.print_linked_list()
 
