@@ -1,5 +1,6 @@
 """
-A hash table (or hash map) is a data structure that stores key-value pairs and provides very efficient insertion, deletion, and lookup — typically in constant time, O(1).
+A hash table (or hash map) is a data structure that stores key-value pairs and provides very efficient insertion, deletion, and lookup —
+typically in constant time, O(1).
 Python dict is built on hash table.
 This uses Linked Lists
 
@@ -9,7 +10,16 @@ Hash table has 3 components:
     Index: The index is where a key-value pair is stored in the internal array. Calculated by applying a hash function to the key - index = hash(key) % capacity
            If the index already exists then we update if key exists or add a node(head) at the start of the current hashed index which points to other indexed nodes
 """
+"""
+Collision Handling Methods
+Separate Chaining: Each bucket holds a linked list (or list) of key-value pairs.
+table[3] → ("apple", 5) → ("banana", 6)
 
+Open Addressing: If a collision occurs, look for the next available slot in the array.
+    Linear probing
+    Quadratic probing
+    Double hashing
+    """
 
 # Define a Node
 class Node:
