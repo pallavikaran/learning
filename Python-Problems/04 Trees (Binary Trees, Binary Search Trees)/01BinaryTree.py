@@ -268,3 +268,84 @@ print_tree(root)
 print(search_in_binary_tree(root,1))
 print(search_in_binary_tree(root, 4))
 print(search_in_binary_tree(root, 9))
+
+"""
+Deletion in Binary Tree
+    1. Find the node to delete (in this case, node with value 2).
+    2. Find the deepest (last) node (in this case, node 5).
+    3. Copy value of deepest node (5) into the node to delete (2).
+    4. Delete the deepest node (which was 5).
+    
+Example:
+To delete: 2
+        1
+       / \
+      2   3
+     / \
+    4   5
+    
+After deletion:
+        1
+       / \
+      5   3
+     /
+    4    
+"""
+
+
+def deletion_in_binary_tree(root, target):
+
+    # Handle root first
+    if not root:
+        return None
+
+    if root.left is None and root.right is None:
+        if root.val == target:
+            return None
+        else:
+            return root
+
+    queue = deque([root])
+    node_to_delete = None  # node with the value to delete.
+    last_node = None  # deepest (last visited) node.
+    parent_of_last = None  # parent of the last node (needed to remove it).
+
+    while queue:
+        curr_node = queue.popleft()
+
+        if curr_node.val == target:
+            node_to_delete = curr_node
+
+        if curr_node.left:
+            parent_of_last = curr_node
+            queue.append(curr_node.left)
+
+        if curr_node.right:
+            parent_of_last = curr_node
+            queue.append(curr_node.right)
+
+        last_node = curr_node
+
+    if node_to_delete:
+        node_to_delete.val = last_node.val  # The node that needs to be deleted, needs to  be replaced with it's children's right or left
+
+        # Remove the deepest node (hence always check right first, if not right then use left)
+        # i.e The child which replaced the target(parent) above needs to be update to None for it's child's position
+        if parent_of_last.right == last_node:
+            parent_of_last.right = None
+        else:
+            parent_of_last.left = None
+
+    return root
+
+
+print("********************* deletion_in_binary_tree *********************")
+root = Node(1,
+        Node(2,
+         Node(4),
+         Node(5)),
+        Node(3))
+
+print_tree(root)
+deletion_in_binary_tree(root, 2)
+print_tree(root)
