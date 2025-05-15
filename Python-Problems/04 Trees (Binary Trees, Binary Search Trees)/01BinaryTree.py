@@ -2,6 +2,8 @@
 Binary Tree is a non-linear and hierarchical data structure where each node has at most two children referred to as the left child and the right child.
 The topmost node in a binary tree is called the root, and the bottom-most nodes are called leaves.
 
+IT ALWAYS HAS TWO CHILDREN.
+
 Representation of Binary Tree
 Each node in a Binary Tree has three parts:
     Data
@@ -64,6 +66,7 @@ def print_tree(node, prefix="", is_left=True):
         print_tree(node.left, prefix + ("    " if is_left else "│   "), True)
 
 
+print("********************* create and print binary search tree  *********************")
 # Initialize and allocate memory for tree nodes
 first_node_obj = Node(2)  # Root
 second_node_obj = Node(3)
@@ -119,11 +122,12 @@ def in_order_traversal_dfs(root):
         in_order_traversal_dfs(root.right)
 
 
+print("********************* in_order_traversal_dfs *********************")
 root = Node(1,
         Node(2, Node(4),Node(5)),
         Node(3))
-print(print_tree(root))
-print(in_order_traversal_dfs(root))
+print_tree(root)
+in_order_traversal_dfs(root)
 
 """
 Pre-order Traversal (Root → Left → Right)
@@ -141,8 +145,10 @@ def pre_order_traversal_dfs(root):
         pre_order_traversal_dfs(root.right)
 
 
-print(print_tree(root))
-print(pre_order_traversal_dfs(root))
+print("********************* pre_order_traversal_dfs *********************")
+print_tree(root)
+pre_order_traversal_dfs(root)
+
 
 """
 Post-order Traversal (Left → Right → Root)
@@ -160,9 +166,9 @@ def post_order_traversal_dfs(root):
         print(root.val, end=' ')
 
 
-print(print_tree(root))
-print(post_order_traversal_dfs(root))
-
+print("********************* post_order_traversal_dfs *********************")
+print_tree(root)
+post_order_traversal_dfs(root)
 
 """
 Level Order Traversal
@@ -180,13 +186,85 @@ def level_order_bfs(root):
     if root is not None:
         queue = deque([root])  # start with the root node in the queue. The queue helps to track which node to visit next
         while queue:
-            node = queue.popleft()  # Remove and get the leftmost node in the queue (FIFO order)
-            print(node.val, end=' ')
-            if node.left:
-                queue.append(node.left)  # If there's a left child, add it to the queue to visit later.
+            curr_node = queue.popleft()  # Remove and get the leftmost node in the queue (FIFO order)
+            print(curr_node.val, end=' ')
+            if curr_node.left:
+                queue.append(curr_node.left)  # If there's a left child, add it to the queue to visit later.
 
-            if node.right:
-                queue.append(node.right)  # If there's a right child, add it to the queue to visit later.
+            if curr_node.right:
+                queue.append(curr_node.right)  # If there's a right child, add it to the queue to visit later.
 
-print(print_tree(root))
-print(level_order_bfs(root))
+
+print("********************* level_order_bfs *********************")
+print_tree(root)
+level_order_bfs(root)
+
+"""
+Insertion in Binary Tree
+"""
+
+
+def insert_in_binary_tree(root, data):
+    new_node = Node(data)
+
+    if root is None:
+        return new_node
+
+    queue = deque([root])  # This creates a python dqueue and initially puts the root node of the binary tree inside the queue
+
+    while queue:
+        curr_node = queue.popleft()  #  It removes and returns the first (leftmost) element from the queue
+
+        if curr_node.left is None:
+            curr_node.left = new_node
+            return root
+        else:
+            queue.append(curr_node.left)  # If there's a left child, add it to the queue to visit later.
+
+        if curr_node.right is None:
+            curr_node.right = new_node
+            return root
+        else:
+            queue.append(curr_node.right)  # If there's a right child, add it to the queue to visit later.
+
+    return root
+
+
+print("********************* insert_in_binary_tree *********************")
+print_tree(root)
+insert_in_binary_tree(root, 6)
+insert_in_binary_tree(root, 7)
+insert_in_binary_tree(root, 8)
+print_tree(root)
+
+"""
+Searching in Binary Tree
+"""
+
+
+def search_in_binary_tree(root, target):
+    if root is not None:
+        queue = deque([root])  # This creates a python dqueue and initially puts the root node of the binary tree inside the queue
+
+        while queue:
+            curr_node = queue.popleft()  #  It removes and returns the first (leftmost) element from the queue
+
+            if curr_node.val == target:
+                return True
+
+            if curr_node.left is not None:
+                queue.append(curr_node.left)  # If there's a left child, add it to the queue to visit later.
+
+            if curr_node.right is not None:
+                queue.append(curr_node.right)  # If there's a right child, add it to the queue to visit later.
+
+        return False   # After entire tree is searched and not found
+    else:
+        return False   # In case root is None
+
+
+print("********************* search_in_binary_tree *********************")
+print_tree(root)
+print(search_in_binary_tree(root,1))
+print(search_in_binary_tree(root, 4))
+print(search_in_binary_tree(root, 9))
