@@ -79,6 +79,8 @@ print_tree(first_node_obj)
 
 """
 A binary tree traversal means visiting each node in the tree in a particular order.
+Depth-First Search (DFS) algorithms: DFS explores as far down a branch as possible before backtracking. 
+It is implemented using recursion. The main traversal methods in DFS for binary trees are:
 There are 3 main depth-first traversals:
     |--------------------------------|
     |Traversal	|    Visit Order     |
@@ -87,6 +89,11 @@ There are 3 main depth-first traversals:
     |Pre-order	|Root → Left → Right |
     |Post-order	|Left → Right → Root |
     |--------------------------------|
+    
+Breadth-First Search (BFS) algorithms: BFS explores all nodes at the present depth before moving on to nodes at the next depth level. 
+It is typically implemented using a queue. BFS in a binary tree is commonly referred to as Level Order Traversal
+
+
 Example:
         1
        / \
@@ -105,18 +112,18 @@ In a binary search tree (BST), in-order gives nodes in SORTED ORDER.
 """
 
 
-def in_order_traversal(root):
+def in_order_traversal_dfs(root):
     if root is not None:
-        in_order_traversal(root.left)
+        in_order_traversal_dfs(root.left)
         print(root.val, end=' ')
-        in_order_traversal(root.right)
+        in_order_traversal_dfs(root.right)
 
 
 root = Node(1,
         Node(2, Node(4),Node(5)),
         Node(3))
 print(print_tree(root))
-print(in_order_traversal(root))
+print(in_order_traversal_dfs(root))
 
 """
 Pre-order Traversal (Root → Left → Right)
@@ -127,15 +134,15 @@ Used to copy a tree. Helpful in prefix expression notation (like in compilers)
 """
 
 
-def pre_order_traversal(root):
+def pre_order_traversal_dfs(root):
     if root is not None:
         print(root.val, end=' ')
-        pre_order_traversal(root.left)
-        pre_order_traversal(root.right)
+        pre_order_traversal_dfs(root.left)
+        pre_order_traversal_dfs(root.right)
 
 
 print(print_tree(root))
-print(pre_order_traversal(root))
+print(pre_order_traversal_dfs(root))
 
 """
 Post-order Traversal (Left → Right → Root)
@@ -146,14 +153,40 @@ Used to delete or free memory in trees. Useful for expression tree evaluation (e
 """
 
 
-def post_order_traversal(root):
+def post_order_traversal_dfs(root):
     if root is not None:
-        post_order_traversal(root.left)
-        post_order_traversal(root.right)
+        post_order_traversal_dfs(root.left)
+        post_order_traversal_dfs(root.right)
         print(root.val, end=' ')
 
 
 print(print_tree(root))
-print(post_order_traversal(root))
+print(post_order_traversal_dfs(root))
 
 
+"""
+Level Order Traversal
+1. Start by putting the root node in the queue.
+2. While the queue is not empty:
+    a. Remove the front node.
+    b. Process it (e.g., print it).
+    c. Add its left and right children to the queue (if they exist).
+"""
+
+from collections import deque
+
+
+def level_order_bfs(root):
+    if root is not None:
+        queue = deque([root])  # start with the root node in the queue. The queue helps to track which node to visit next
+        while queue:
+            node = queue.popleft()  # Remove and get the leftmost node in the queue (FIFO order)
+            print(node.val, end=' ')
+            if node.left:
+                queue.append(node.left)  # If there's a left child, add it to the queue to visit later.
+
+            if node.right:
+                queue.append(node.right)  # If there's a right child, add it to the queue to visit later.
+
+print(print_tree(root))
+print(level_order_bfs(root))
