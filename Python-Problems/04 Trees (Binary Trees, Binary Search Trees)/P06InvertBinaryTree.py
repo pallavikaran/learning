@@ -67,9 +67,11 @@ def invert_binary_tree(root):
     if root is None:
         return
     else:
+        # invert left right
         temp = root.left
         root.left = root.right
         root.right = temp
+        # recursive invert left & right
         invert_binary_tree(root.left)
         invert_binary_tree(root.right)
 
