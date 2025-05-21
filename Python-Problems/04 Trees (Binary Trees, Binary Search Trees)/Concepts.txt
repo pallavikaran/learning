@@ -1,4 +1,27 @@
 1. Traversal: Inorder, Preorder, Postorder (recursive and iterative)
+    DFS Traversals:
+        Pre-order (Node → Left → Right)
+        1. Copying the tree
+        2. Serializing a tree (like in LeetCode)
+        3. Generate HTML/DOM tree from top-down
+
+        In-order (Left → Node → Right)
+        1. Get sorted values from BST
+        2. Check if a tree is a valid BST
+        3. Find kth smallest/largest in BST
+
+        Post-order (Left → Right → Node)
+        1. Calculate tree height or depth
+        2. Compute diameter of a tree
+        3. Delete/free memory (delete children before parent)
+        4. Expression evaluation
+
+    BFS Traversals:
+        Level-order (Breadth-first Search)
+        1. Print level-wise order
+        2. Minimum depth of a tree
+        3. Connecting nodes at the same level
+        4. Serialization format that reflects structure
 
 2. Searching: Find a node with a given value (especially in BSTs)
 
