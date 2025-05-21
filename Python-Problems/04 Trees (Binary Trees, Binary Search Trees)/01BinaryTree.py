@@ -49,6 +49,7 @@ Terminologies in Binary Tree
     / \ 
   Null Null 
 """
+from collections import deque
 
 
 class Node:
@@ -56,6 +57,25 @@ class Node:
         self. left = left
         self.right = right
         self.val = data
+
+
+def build_tree(values):  # This builds a tree having all children both in left & right
+    if not values:
+        return None
+    root = Node(values[0])  # root node
+    queue = deque([root])   # initialize queue with root node
+    index = 1  # since root is already at index 0
+    while queue and index < len(values):
+        node = queue.popleft()  # prev value will act as parent to populate left and right children
+        if index < len(values) and values[index] is not None:  # populate left child
+            node.left = Node(values[index])
+            queue.append(node.left)
+        index += 1
+        if index < len(values) and values[index] is not None:  # populate right child
+            node.right = Node(values[index])
+            queue.append(node.right)
+        index += 1
+    return root
 
 
 def print_tree(node, prefix="", is_left=True):
@@ -79,6 +99,10 @@ first_node_obj.right = fourth_node_obj
 second_node_obj.left = third_node_obj
 
 print_tree(first_node_obj)
+
+print("********************* build and print binary search tree  *********************")
+tree = build_tree([4,2,7,1,3,6,9])
+print(print_tree(tree))
 
 """
 A binary tree traversal means visiting each node in the tree in a particular order.
@@ -178,8 +202,6 @@ Level Order Traversal
     b. Process it (e.g., print it).
     c. Add its left and right children to the queue (if they exist).
 """
-
-from collections import deque
 
 
 def level_order_bfs(root):
