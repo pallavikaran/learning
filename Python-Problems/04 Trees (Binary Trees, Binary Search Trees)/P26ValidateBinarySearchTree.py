@@ -54,8 +54,8 @@ def is_valid_BST(root):
             return False
 
         # At this node, compare left child's value and right child's value of the node
-        return (compare(node.left, min_value, node.val)  #  for a valid tree, left child value < node.value
-                and compare(node.right, node.val, max_value))  #  for a valid tree, right child value > node.value
+        return (compare(node.left, min_value, node.val)  # for a valid tree, left child value < node.value
+                and compare(node.right, node.val, max_value))  # for a valid tree, right child value > node.value
 
     return compare(root, float('-inf'), float('inf'))  # Start with the whole range of possible values (-inf to +inf).
 
