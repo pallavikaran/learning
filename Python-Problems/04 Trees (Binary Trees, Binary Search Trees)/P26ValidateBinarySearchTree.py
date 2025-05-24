@@ -31,3 +31,43 @@ The number of nodes in the tree is in the range [1, 104].
 -231 <= Node.val <= 231 - 1
 """
 
+
+# Definition for a binary tree node.
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def is_valid_BST(root):
+    """
+    :type root: Optional[TreeNode]
+    :rtype: bool
+    """
+
+    def compare(node, min_value, max_value):
+        if not node:
+            return True
+
+        if not (min_value < node.val < max_value):
+            return False
+
+        # At this node, compare left child's value and right child's value of the node
+        return (compare(node.left, min_value, node.val)  #  for a valid tree, left child value < node.value
+                and compare(node.right, node.val, max_value))  #  for a valid tree, right child value > node.value
+
+    return compare(root, float('-inf'), float('inf'))  # Start with the whole range of possible values (-inf to +inf).
+
+
+root = TreeNode(2)
+root.left = TreeNode(1)
+root.right = TreeNode(3)
+print(is_valid_BST(root))
+
+root1 = TreeNode(5)
+root1.left = TreeNode(1)
+root1.right = TreeNode(4)
+root1.right.left = TreeNode(3)
+root1.right.right = TreeNode(6)
+print(is_valid_BST(root1))
