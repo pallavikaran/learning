@@ -33,6 +33,7 @@ At each node, calculate:
 """
 
 """
+Post order Traversal: Left → Right → Root
 Python doesn't let you assign to a variable from an outer scope unless it's declared nonlocal (for inner functions) or global.
 ❌ This won’t work:
 diameter = 0
