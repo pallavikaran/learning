@@ -1,0 +1,118 @@
+=======================================================================================================================
+                                                 TYPES OF SQL JOINS
+=======================================================================================================================
+1. ✅ INNER JOIN
+Returns only matching rows from both tables.
+
+Example:
+
+SELECT *
+FROM A
+INNER JOIN B
+ON A.id = B.id;
+
+Result:
+Only rows where A.id = B.id exist in both tables.
+
+Input:
+A       B
+----    ----
+1       1
+2       2
+3       4
+
+Result:
+1       1
+2       2
+=======================================================================================================================
+2. 🔄 LEFT JOIN (or LEFT OUTER JOIN)
+Returns all rows from the left table (A), and the matching rows from the right table (B).
+If no match, NULLs are returned from B.
+
+Example:
+
+SELECT *
+FROM A
+LEFT JOIN B
+ON A.id = B.id;
+
+Input:
+A       B
+----    ----
+1       1
+2       2
+3       4
+
+Result:
+1       1
+2       2
+3       NULL
+=======================================================================================================================
+3. 🔁 RIGHT JOIN (or RIGHT OUTER JOIN)
+Opposite of LEFT JOIN: returns all rows from the right table (B), and the matching rows from the left table (A).
+
+Example:
+
+SELECT *
+FROM A
+RIGHT JOIN B
+ON A.id = B.id;
+
+Input:
+A       B
+----    ----
+1       1
+2       2
+3       4
+
+Result:
+1       1
+2       2
+NULL    4
+
+=======================================================================================================================
+4. 🌐 FULL JOIN (or FULL OUTER JOIN)
+Returns all rows from both tables, with NULLs where no match exists.
+
+Example:
+
+SELECT *
+FROM A
+FULL JOIN B
+ON A.id = B.id;
+
+Input:
+A       B
+----    ----
+1       1
+2       2
+3       4
+
+Result:
+1       1
+2       2
+3       NULL
+NULL    4
+
+=======================================================================================================================
+5. ❌ CROSS JOIN
+Returns every possible combination of rows from the two tables.
+Also called the Cartesian product.
+
+Example:
+
+SELECT *
+FROM A
+CROSS JOIN B;
+
+If A has 2 rows and B has 3 rows, result will have 2 × 3 = 6 rows.
+=======================================================================================================================
+📝 Summary
+-----------------------------------------------------------------------------------------------------------------------
+Join        Type	    Returns Rows Where...
+INNER       JOIN	    Match exists in both tables
+LEFT        JOIN	    All from left + matching from right (NULLs if no match)
+RIGHT       JOIN	    All from right + matching from left (NULLs if no match)
+FULL        JOIN	    All rows from both tables (with NULLs for no match)
+CROSS       JOIN	    All combinations of rows from both tables
+=======================================================================================================================
