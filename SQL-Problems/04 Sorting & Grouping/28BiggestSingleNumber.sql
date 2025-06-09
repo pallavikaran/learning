@@ -73,11 +73,13 @@ limit 1
 
 
 -- Handles NULL
-select max(num) as num
-from (
-  select num
-  from MyNumbers
-  group by num
-  having count(*) = 1
+SELECT
+    MAX(num) as num
+FROM (
+  SELECT
+    num
+  FROM MyNumbers
+  GROUP BY num
+  HAVING COUNT(*) = 1
 ) as singles
 

@@ -44,13 +44,18 @@ Output:
 -- Determine the first year each product_id appeared in the Sales table.
 -- Join that result back with the original Sales table to get all sales in that first year for each product.
 
-select
-s.product_id,
-fs.first_year,
-s.quantity,
-s.price
-from Sales s
-join (select product_id, min(year) as first_year from Sales group by product_id) as fs
-on s.product_id = fs.product_id
-and s.year = fs.first_year
+SELECT
+    s.product_id,
+    fs.first_year,
+    s.quantity,
+    s.price
+FROM Sales s
+JOIN (
+    SELECT
+        product_id,
+        MIN(year) as first_year
+    FROM Sales
+    GROUP BY product_id) as fs
+ON s.product_id = fs.product_id
+AND s.year = fs.first_year
 

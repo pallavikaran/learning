@@ -54,21 +54,25 @@ JOIN
 */
 
 -- grouping by the manager HAVING to get only managers who have more than 4 reports.
-select
+SELECT
   e1.name
-from Employee e1
-join Employee e2
-  on e1.id = e2.managerId
-group by e1.id, e1.name
-having count(e2.id) > 4;
+FROM
+    Employee e1
+JOIN
+    Employee e2
+ON e1.id = e2.managerId
+GROUP BY e1.id, e1.name
+HAVING COUNT(e2.id) > 4;
 
 
 -- count how many employees each manager has
-select
-e1.name
-from Employee e1
-join Employee e2
-on e1.id = e2.managerId
-group by e2.managerId
-having count(e2.managerId) > 4
+SELECT
+    e1.name
+FROM
+    Employee e1
+JOIN
+    Employee e2
+ON e1.id = e2.managerId
+GROUP BY e2.managerId
+HAVING COUNT(e2.managerId) > 4
 

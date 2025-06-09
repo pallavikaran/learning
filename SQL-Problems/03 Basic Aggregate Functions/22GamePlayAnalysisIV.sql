@@ -42,15 +42,15 @@ Only the player with id 1 logged back in after the first day he had logged in so
 -- Step 3: math: from step 2 /no of players, round to 2 decimal places
 -- Note: Return Fraction so (* 1.0) and not % so avoid using (* 100)
 
-select
+SELECT
 ROUND(
-    (count(*) * 1.0 / (select count(distinct player_id) from Activity)), 2
-) as fraction
-from Activity a
-JOIN (select
-player_id,
-min(event_date) as first_login
-from Activity
-group by player_id) as first_login_sq
-on a.player_id = first_login_sq.player_id
-and a.event_date = DATE_ADD(first_login_sq.first_login, INTERVAL 1 DAY)
+    (COUNT(*) * 1.0 / (select COUNT(DISTINCT player_id) from Activity)), 2) as fraction
+FROM Activity a
+JOIN
+    (SELECT
+        player_id,
+        MIN(event_date) as first_login
+    FROM Activity
+    GROUP BY player_id) as first_login_sq
+ON a.player_id = first_login_sq.player_id
+AND a.event_date = DATE_ADD(first_login_sq.first_login, INTERVAL 1 DAY)

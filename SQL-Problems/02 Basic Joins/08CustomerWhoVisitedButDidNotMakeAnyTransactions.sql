@@ -97,13 +97,17 @@ group by customer_id
 
 
 -- NOT EXISTS
-select customer_id,
-count(visit_id) as count_no_trans
-from Visits V
-where not exists (
-    select 1
-    from Transactions T
-    where T.visit_id = V.visit_id)
-group by customer_id
+SELECT
+    customer_id,
+    COUNT(visit_id) as count_no_trans
+FROM
+    Visits V
+WHERE NOT EXISTS (
+    SELECT
+        1
+    FROM
+        Transactions T
+    WHERE T.visit_id = V.visit_id)
+GROUP BY customer_id
 
 

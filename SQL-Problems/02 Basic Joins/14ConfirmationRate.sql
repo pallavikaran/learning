@@ -79,15 +79,16 @@ User 2 made 2 requests where one was confirmed and the other timed out. The conf
 
 -- Use COUNT for counting all values of a column
 -- Use SUM for counting all values of a column which has a condition. Count can't be used here
-select
-s.user_id,
-ROUND(
-    IFNULL(
-        SUM(c.action = 'confirmed') / COUNT(c.action),
-        0),
-    2) as confirmation_rate
-from Signups s
-left join Confirmations c
-on s.user_id = c.user_id
-group by s.user_id
+
+SELECT
+    s.user_id,
+    ROUND(
+        IFNULL(
+            SUM(c.action = 'confirmed') / COUNT(c.action), 0),
+        2) as confirmation_rate
+FROM Signups s
+LEFT JOIN
+    Confirmations c
+ON s.user_id = c.user_id
+GROUP BY s.user_id
 

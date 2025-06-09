@@ -46,21 +46,28 @@ In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
 */
 
 -- Select from 2 diff tables (SAME AS CROSS JOIN)
-select w1.id as Id
-from Weather w1, Weather w2
-where DATEDIFF(w1.recordDate, w2.recordDate) = 1
-and w1.temperature > w2.temperature
+SELECT
+    w1.id as Id
+FROM Weather w1, Weather w2
+WHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1
+AND w1.temperature > w2.temperature
 
 -- INNER JOIN
-select w1.id as Id
-from Weather w1
-JOIN Weather w2
-where DATEDIFF(w1.recordDate, w2.recordDate) = 1
-and w1.temperature > w2.temperature
+SELECT
+    w1.id as Id
+FROM
+    Weather w1
+JOIN
+    Weather w2
+WHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1
+AND w1.temperature > w2.temperature
 
 -- CROSS JOIN
-select w1.id as Id
-from Weather w1
-cross JOIN Weather w2
-where DATEDIFF(w1.recordDate, w2.recordDate) = 1
-and w1.temperature > w2.temperature
+SELECT
+    w1.id as Id
+FROM
+    Weather w1
+CROSS JOIN
+    Weather w2
+WHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1
+AND w1.temperature > w2.temperature

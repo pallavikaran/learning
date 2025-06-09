@@ -60,9 +60,11 @@ The unique ID of Winston is 3.
 The unique ID of Jonathan is 1.
 */
 
-select
-euni.unique_id as unique_id,
-e.name
-from Employees e
-left join EmployeeUNI euni
-on e.id = euni.id
+SELECT
+    euni.unique_id as unique_id,
+    e.name
+FROM
+    Employees e
+LEFT JOIN
+    EmployeeUNI euni
+ON e.id = euni.id

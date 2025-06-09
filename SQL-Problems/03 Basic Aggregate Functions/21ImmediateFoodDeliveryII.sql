@@ -50,14 +50,14 @@ Hence, half the customers have immediate first orders.
     -- How many of them are immediate.
 -- Compute the percentage: immediate_count / total_count * 100, rounded to 2 decimals
 
-select
+SELECT
   ROUND(
-    SUM(case when order_date = customer_pref_delivery_date then 1 else 0 end) * 100.0 / count(*),
-    2
-  ) as immediate_percentage
+    SUM(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as immediate_percentage
 from Delivery
-where (customer_id, order_date) in (
-    select customer_id, min(order_date)
-    from Delivery
-    group by customer_id
+WHERE (customer_id, order_date) in (
+    SELECT
+        customer_id,
+        MIN(order_date)
+    FROM Delivery
+    GROUP BY customer_id
 )

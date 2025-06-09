@@ -43,9 +43,9 @@ Explanation:
 */
 
 
-select
-class
-from Courses
-group by class
-having count(distinct student) > 4
+SELECT
+    class
+FROM Courses
+GROUP BY class
+HAVING COUNT(DISTINCT student) > 4
 

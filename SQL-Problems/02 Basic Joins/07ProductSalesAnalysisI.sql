@@ -69,10 +69,12 @@ From sale_id = 2, we can conclude that Nokia was sold for 5000 in the year 2009.
 From sale_id = 7, we can conclude that Apple was sold for 9000 in the year 2011.
 */
 
-select
-p.product_name,
-s.year,
-s.price
-from Sales s
-join Product p
-on s.product_id = p.product_id
+SELECT
+    p.product_name,
+    s.year,
+    s.price
+FROM
+    Sales s
+JOIN
+    Product p
+ON s.product_id = p.product_id

@@ -38,8 +38,8 @@ The followers of 1 are {0}
 The followers of 2 are {0,1}
 */
 
-select
-user_id,
-count(distinct follower_id) as followers_count
-from Followers
-group by user_id
+SELECT
+    user_id,
+    COUNT(DISTINCT follower_id) as followers_count
+FROM Followers
+GROUP BY user_id

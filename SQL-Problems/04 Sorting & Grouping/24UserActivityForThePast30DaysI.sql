@@ -53,9 +53,9 @@ Explanation: Note that we do not care about days with zero active users.
 -- To include days with zero users, you'd need a calendar table or CTE to join against, but that's not required per the problem.
 
 
-select
-activity_date as day,
-count(distinct user_id) as active_users
-from Activity
-where activity_date between date('2019-07-27') - INTERVAL 29 DAY AND '2019-07-27'
-group by activity_date
+SELECT
+    activity_date as day,
+    COUNT(DISTINCT user_id) as active_users
+FROM Activity
+WHERE activity_date BETWEEN DATE('2019-07-27') - INTERVAL 29 DAY AND '2019-07-27'
+GROUP BY activity_date
