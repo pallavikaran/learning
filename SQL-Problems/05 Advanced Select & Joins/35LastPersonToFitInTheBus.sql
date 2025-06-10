@@ -54,6 +54,7 @@ Explanation: The folowing table is ordered by the turn for simplicity.
 -- order people by turn
 -- variable @total to keep track of the running sum of weights. Have init to initialize total
 -- After calculating the running total weight, filter out any person whose running total is over 1000
+
 WITH cte as (
 SELECT
     person_name,
