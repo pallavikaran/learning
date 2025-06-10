@@ -1,0 +1,6 @@
+Join Condition       |    Meaning                        |    e1 is	     |   e2 is
+------------------------------------------------------------------------------------------
+e1.id = e2.managerId | 	 Join manager to their reports	 |   Manager	 |  Employee
+e1.managerId = e2.id |	 Join employee to their manager	 |   Employee	 |  Manager
+
+What ever you need to fetch, comes on the first FROM in a LEFT JOIN.

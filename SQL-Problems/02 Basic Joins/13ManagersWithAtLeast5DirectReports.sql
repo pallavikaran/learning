@@ -55,26 +55,28 @@ JOIN
 -- ================================================ SOLUTION 1 =========================================================
 
 -- grouping by the manager HAVING to get only managers who have more than 4 reports.
+-- ** Joining manager to employee ** coz you need to get list of managers
+
 SELECT
-  e1.name
+  m.name
 FROM
-    Employee e1
+    Employee m
 JOIN
-    Employee e2
-ON e1.id = e2.managerId
-GROUP BY e1.id, e1.name
-HAVING COUNT(e2.id) > 4;
+    Employee e
+ON m.id = e.managerId
+GROUP BY e.id, m.name
+HAVING COUNT(e.id) > 4;
 
 -- ================================================ SOLUTION 2 =========================================================
 
 -- count how many employees each manager has
 SELECT
-    e1.name
+    m.name
 FROM
-    Employee e1
+    Employee m
 JOIN
-    Employee e2
-ON e1.id = e2.managerId
-GROUP BY e2.managerId
-HAVING COUNT(e2.managerId) > 4
+    Employee e
+ON m.id = e.managerId
+GROUP BY e.managerId
+HAVING COUNT(e.managerId) > 4
 
