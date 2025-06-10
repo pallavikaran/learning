@@ -92,6 +92,7 @@ Bob attended the Math exam 1 time, the Programming exam 1 time, and did not atte
 Alex did not attend any exams.
 John attended the Math exam 1 time, the Physics exam 1 time, and the Programming exam 1 time.
 */
+-- ================================================ SOLUTION 1 =========================================================
 
 -- Basic JOIN (ORDER MATTERS)
 SELECT
@@ -106,6 +107,8 @@ LEFT JOIN Examinations ex
   AND sub.subject_name = ex.subject_name
 GROUP BY s.student_id, s.student_name, sub.subject_name
 ORDER BY s.student_id, sub.subject_name;
+
+-- ================================================ SOLUTION 2 =========================================================
 
 -- CROSS JOIN
 SELECT
@@ -125,6 +128,7 @@ GROUP BY
 ORDER BY
     s.student_id, sub.subject_name;
 
+-- ================================================ SOLUTION 3 =========================================================
 
 -- Select from 2 diff tables (SAME AS CROSS JOIN)
 SELECT

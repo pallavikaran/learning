@@ -51,6 +51,7 @@ Output:
 Explanation:
 The customers who bought all the products (5 and 6) are customers with IDs 1 and 3.
 */
+-- ================================================ SOLUTION 1 =========================================================
 
 -- Count how many distinct products each customer bought.
 -- Compare that COUNT to the TOTAL number of products in the Product table.

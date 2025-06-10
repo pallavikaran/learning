@@ -45,13 +45,13 @@ Output:
 Explanation: Note that we do not care about days with zero active users.
 */
 
+-- ================================================ SOLUTION 1 =========================================================
 
 -- Get the data for activity_date for 30 days prior to 2019-07-27 included
 -- Group it by activity_date
 -- select distinct users who had activity
 -- Days with no user activity at all are excluded (as required).
 -- To include days with zero users, you'd need a calendar table or CTE to join against, but that's not required per the problem.
-
 
 SELECT
     activity_date as day,

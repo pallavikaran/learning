@@ -41,6 +41,7 @@ Output:
 +------------+------------+----------+-------+
 */
 
+-- ================================================ SOLUTION 1 =========================================================
 -- Determine the first year each product_id appeared in the Sales table.
 -- Join that result back with the original Sales table to get all sales in that first year for each product.
 

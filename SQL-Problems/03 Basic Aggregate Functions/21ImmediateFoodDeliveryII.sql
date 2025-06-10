@@ -44,6 +44,8 @@ The customer id 4 has a first order with delivery id 7 and it is immediate.
 Hence, half the customers have immediate first orders.
 */
 
+-- ================================================ SOLUTION 1 =========================================================
+
 -- Identify the first order for each customer — the row with the earliest order_date
 -- From those first orders, count:
     -- Total number of first orders.

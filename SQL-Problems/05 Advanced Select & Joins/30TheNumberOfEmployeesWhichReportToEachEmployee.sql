@@ -60,19 +60,21 @@ Output:
 | 3           | Bob     | 1             | 37          |
 +-------------+---------+---------------+-------------+
 */
+-- ================================================ SOLUTION 1 =========================================================
 
 -- Count how many direct reports they have
 -- Compute the average age of those reports (rounded to nearest integer)
 -- Return the manager’s ID and name, count of direct reports, and average age
-
 
 SELECT
     e.employee_id,
     e.name,
     COUNT(r.employee_id) AS reports_count,
     ROUND(AVG(r.age)) AS average_age
-FROM Employees e
-JOIN Employees r
-    ON r.reports_to = e.employee_id
+FROM
+    Employees e
+JOIN
+    Employees r
+ON r.reports_to = e.employee_id
 GROUP BY e.employee_id, e.name
 ORDER BY e.employee_id

@@ -59,7 +59,8 @@ Output:
 Explanation: There are no single numbers in the input table so we return null.
 */
 
-
+-- ================================================ SOLUTION 1 =========================================================
+************************THIS WILL NOT WORK ******************
 -- GROUP BY num automatically handles NULL
 -- This query does not return a row at all (i.e. returns zero rows) if: There are no numbers that appear exactly once, including NULL.
 -- That means: It won't return NULL; it will return nothing.
@@ -71,6 +72,7 @@ having count(*) = 1
 order by num desc
 limit 1
 
+-- ================================================ SOLUTION 2 =========================================================
 
 -- Handles NULL
 SELECT

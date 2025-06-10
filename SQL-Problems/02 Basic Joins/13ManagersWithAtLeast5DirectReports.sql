@@ -52,6 +52,7 @@ JOIN
 | 101    | John     | 106   | Ron   |
 +-----+-------+------------+--------+
 */
+-- ================================================ SOLUTION 1 =========================================================
 
 -- grouping by the manager HAVING to get only managers who have more than 4 reports.
 SELECT
@@ -64,6 +65,7 @@ ON e1.id = e2.managerId
 GROUP BY e1.id, e1.name
 HAVING COUNT(e2.id) > 4;
 
+-- ================================================ SOLUTION 2 =========================================================
 
 -- count how many employees each manager has
 SELECT

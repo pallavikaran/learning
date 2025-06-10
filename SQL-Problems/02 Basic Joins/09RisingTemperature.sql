@@ -44,6 +44,7 @@ Explanation:
 In 2015-01-02, the temperature was higher than the previous day (10 -> 25).
 In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
 */
+-- ================================================ SOLUTION 1 =========================================================
 
 -- Select from 2 diff tables (SAME AS CROSS JOIN)
 SELECT
@@ -51,6 +52,8 @@ SELECT
 FROM Weather w1, Weather w2
 WHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1
 AND w1.temperature > w2.temperature
+
+-- ================================================ SOLUTION 2 =========================================================
 
 -- INNER JOIN
 SELECT
@@ -61,6 +64,8 @@ JOIN
     Weather w2
 WHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1
 AND w1.temperature > w2.temperature
+
+-- ================================================ SOLUTION 3 =========================================================
 
 -- CROSS JOIN
 SELECT

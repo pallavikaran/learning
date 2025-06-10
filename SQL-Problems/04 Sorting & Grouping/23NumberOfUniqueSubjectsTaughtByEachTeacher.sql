@@ -46,6 +46,7 @@ Teacher 2:
   - They teach subject 4 in department 1.
 */
 
+-- ================================================ SOLUTION 1 =========================================================
 
 SELECT
     teacher_id,

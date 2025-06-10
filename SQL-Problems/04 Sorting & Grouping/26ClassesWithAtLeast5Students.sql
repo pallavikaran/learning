@@ -42,6 +42,7 @@ Explanation:
 - Computer has 1 student, so we do not include it.
 */
 
+-- ================================================ SOLUTION 1 =========================================================
 
 SELECT
     class

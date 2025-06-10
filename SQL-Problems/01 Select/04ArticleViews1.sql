@@ -45,9 +45,11 @@ Output:
 | 7    |
 +------+
 */
+-- ================================================ SOLUTION 1 =========================================================
 
-select
-distinct author_id as id
-from Views
-where author_id = viewer_id
-order by id
+SELECT
+    DISTINCT author_id as id
+FROM
+    Views
+WHERE author_id = viewer_id
+ORDER BY id

@@ -74,6 +74,7 @@ Customer with id = 96 visited the mall once and did not make any transactions.
 As we can see, users with IDs 30 and 96 visited the mall one time without making any transactions. Also, user 54 visited the mall twice and did not make any transactions.
 */
 
+-- ================================================ SOLUTION 1 =========================================================
 
 -- JOIN
 select
@@ -85,6 +86,7 @@ on v.visit_id = t.visit_id
 where t.amount is null
 group by v.customer_id
 
+-- ================================================ SOLUTION 2 =========================================================
 
 -- NOT IN
 select customer_id,
@@ -95,6 +97,7 @@ where visit_id not in (
     from Transactions)
 group by customer_id
 
+-- ================================================ SOLUTION 3 =========================================================
 
 -- NOT EXISTS
 SELECT
