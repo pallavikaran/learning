@@ -51,8 +51,7 @@ FROM
     Employees e                                  -- employee table
 LEFT JOIN                                        -- so that we still get the employee even if their manager is missing
     Employees m                                  -- manager table
-ON
-    e.manager_id = m.employee_id
+ON e.manager_id = m.employee_id
 WHERE
     e.salary < 30000                             --  employee has salary under 30000
 AND

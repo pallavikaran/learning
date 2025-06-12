@@ -89,7 +89,7 @@ Frozen 2 and Joker have a rating average of 3.5 in February but Frozen 2 is smal
 -- "Daniel" is lexicographically smaller than "Monica" because "D" comes before "M"
 -- Hence order by column asc, no need to do length/char_length
 
--- ================================================ SOLUTION 1 =========================================================
+--  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOT SOLUTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -- THIS MIGHT LOOK RIGHT BUT IT IS ******* WRONG *********
 -- MySQL does not allow using ORDER BY inside subqueries when using UNION unless wrapped with derived tables or CTEs
 
@@ -128,7 +128,7 @@ GROUP BY movie_id, title
 ORDER BY AVG(rating) DESC, title ASC
 LIMIT 1)
 
--- ================================================ SOLUTION 2 =========================================================
+-- ================================================ SOLUTION 1 =========================================================
 -- This is with CTE and is right
 
 WITH cte AS (
