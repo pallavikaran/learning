@@ -78,3 +78,120 @@ ON (s1.id % 2 = 1 AND s2.id = s1.id + 1) -- odd
     OR
    (s1.id % 2 = 0 AND s2.id = s1.id - 1) -- even
 ORDER BY s1.id ASC
+
+-- ================================================ SOLUTION 3 =========================================================
+-- Window Function
+-- This will only work if the id in the given table is starting from 1 a.k.a row_no and id ARE matching
+
+-- Assign a row number (rn) to each student ordered by id
+WITH assignd_rnos AS (
+    SELECT
+        id,
+        student,
+        ROW_NUMBER() OVER (ORDER BY id) as rno
+    FROM
+        Seat
+),
+-- In the swapped CTE:
+    -- If the row number is odd and there’s a next student, set new position to rn + 1.
+    -- If the row number is even, it goes to rn - 1.
+    -- If it’s the last student (odd and no partner), leave it unchanged
+swapped_seats AS (
+    SELECT
+        id,
+        student,
+        CASE
+            WHEN rno % 2 = 1 AND LEAD(student) OVER (ORDER BY rno ASC) IS NOT NULL THEN rno + 1
+            WHEN rno % 2 = 0 THEN rno - 1
+            ELSE rno
+        END AS swapped_rno
+    FROM
+        assignd_rnos
+)
+
+SELECT
+    swapped_rno AS id,
+    student
+FROM
+    swapped_seats
+ORDER BY swapped_rno ASC
+
+-- ================================================ SOLUTION 4 =========================================================
+-- Window Function
+-- This will work if the id in the given table is starting from any number a.k.a row_no and id ARE NOT matching
+
+-- Step 1: Assign a row number to each student
+WITH assignd_rnos AS (
+    SELECT
+        id,
+        student,
+        ROW_NUMBER() OVER (ORDER BY id) AS rno
+    FROM Seat
+),
+
+-- Step 2: Determine the new row position for each student
+swapped_seats AS (
+    SELECT
+        student,
+        CASE
+            WHEN rno % 2 = 1 AND LEAD(student) OVER (ORDER BY rno) IS NOT NULL THEN rno + 1
+            WHEN rno % 2 = 0 THEN rno - 1
+            ELSE rno
+        END AS target_rno
+    FROM assignd_rnos
+),
+
+-- Step 3: Map the target_rno back to original seat IDs
+seat_ids AS (
+    SELECT
+        id,
+        ROW_NUMBER() OVER (ORDER BY id) AS rno
+    FROM Seat
+)
+
+-- Step 4: Join swapped students to actual IDs
+SELECT
+    s.id,
+    sw.student
+FROM
+    seat_ids s
+JOIN
+    swapped_seats sw
+ON s.rno = sw.target_rno
+ORDER BY s.id
+
+-- ================================================ SOLUTION 4 =========================================================
+-- Window Function
+-- This will work if the id in the given table is starting from any number a.k.a row_no and id ARE NOT matching
+-- ELIMINATING Step 3 from above rather using already assignd_rnos to get the same usecase
+
+WITH assignd_rnos AS (
+    SELECT
+        id,
+        student,
+        ROW_NUMBER() OVER (ORDER BY id) AS rno
+    FROM Seat
+),
+
+-- Step 2: Determine the new row position for each student
+swapped_seats AS (
+    SELECT
+        student,
+        CASE
+            WHEN rno % 2 = 1 AND LEAD(student) OVER (ORDER BY rno) IS NOT NULL THEN rno + 1
+            WHEN rno % 2 = 0 THEN rno - 1
+            ELSE rno
+        END AS target_rno
+    FROM assignd_rnos
+)
+
+-- Step 4: Join swapped students to actual IDs
+SELECT
+    s.id,
+    sw.student
+FROM
+    assignd_rnos s
+JOIN
+    swapped_seats sw
+ON s.rno = sw.target_rno
+ORDER BY s.id
