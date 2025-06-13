@@ -43,6 +43,7 @@ For 2020-06-02, the Sold item is (Mask), we just return it.
 */
 
 -- ================================================ SOLUTION 1 =========================================================
+-- GROUP_CONCAT is ARRAY_AGG equivalent in MySQL
 
 SELECT
     sell_date,

@@ -48,8 +48,10 @@ So, the result is the sum of tiv_2016 of the first and last record, which is 45.
 */
 
 -- ================================================ SOLUTION 1 =========================================================
-SELECT ROUND(SUM(tiv_2016),2) AS tiv_2016
-FROM Insurance
+SELECT
+    ROUND(SUM(tiv_2016),2) AS tiv_2016
+FROM
+    Insurance
 WHERE(tiv_2015)IN(
     SELECT
         tiv_2015
@@ -119,3 +121,22 @@ SELECT ROUND(SUM(i.tiv_2016), 2) AS tiv_2016
 FROM Insurance i
 JOIN distint_tiv_2015 dt ON i.tiv_2015 = dt.tiv_2015
 JOIN distint_lat_lon dl ON i.lat = dl.lat AND i.lon = dl.lon
+
+-- ================================================ SOLUTION 4 ======================================================================================
+-- Window Function
+
+WITH cte AS(
+    SELECT
+        tiv_2016,
+        COUNT(*) OVER (PARTITION BY tiv_2015) as tiv_2015_cnt,
+        COUNT(*) OVER (PARTITION BY lat, lon) as lat_lon_cnt
+    FROM
+        Insurance)
+
+SELECT
+    ROUND(SUM(tiv_2016), 2) AS tiv_2016
+FROM
+    cte
+WHERE
+    tiv_2015_cnt > 1
+AND lat_lon_cnt = 1

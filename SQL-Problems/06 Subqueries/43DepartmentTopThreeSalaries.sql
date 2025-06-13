@@ -165,3 +165,60 @@ JOIN TopSalaries ts
  AND e.salary = ts.salary
 
 -- ================================================ SOLUTION 3 ======================================================================================
+-- Window's function
+
+WITH cte AS(
+    SELECT
+        departmentId,
+        name as Employee,
+        salary,
+        DENSE_RANK() OVER (PARTITION BY departmentId ORDER BY salary DESC) as rnk_sal
+    FROM
+        Employee
+)
+
+SELECT
+    d.name AS Department,
+    c.Employee,
+    c.Salary
+FROM
+    cte c
+JOIN
+    Department d
+ON c.departmentId = d.id
+WHERE c.rnk_sal <= 3
+
+-- ================================================ SOLUTION 4 ======================================================================================
+-- Advance - Return NULL if the table has no records.
+-- Window's function + union
+
+WITH cte AS (
+    SELECT
+        departmentId,
+        name AS Employee,
+        salary,
+        DENSE_RANK() OVER (PARTITION BY departmentId ORDER BY salary DESC) AS rnk_sal
+    FROM
+        Employee
+)
+
+SELECT
+    d.name AS Department,
+    c.Employee,
+    c.Salary
+FROM
+    cte c
+JOIN
+    Department d ON c.departmentId = d.id
+WHERE
+    c.rnk_sal <= 3
+
+UNION ALL
+
+SELECT
+    NULL AS Department,
+    NULL AS Employee,
+    NULL AS Salary
+WHERE NOT EXISTS (
+    SELECT 1 FROM Employee
+)

@@ -121,3 +121,55 @@ WHERE
 
 -- We can't remove LIMIT or the WHERE filter above coz it still does not filter to only users who have the maximum number of friends,
 -- it gets all users and their number of friends
+
+-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOT SOLUTION  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- Window Function
+-- You're partitioning by id, which means the RANK() window will be computed separately for each person,
+-- so every person gets a rnk = 1 in their own partition
+
+-- Union all requester and accepter IDs into one column to represent a "friend".
+WITH all_friends AS (
+    SELECT requester_id AS id FROM RequestAccepted
+    UNION ALL
+    SELECT accepter_id AS id FROM RequestAccepted
+),
+ranked_friends_cnt AS(
+    SELECT
+        id,
+        COUNT(*) AS num,
+        RANK() OVER (PARTITION BY id ORDER BY COUNT(*) DESC) as rnk
+    FROM
+        all_friends)
+
+SELECT
+    id,
+    num
+FROM
+    ranked_friends_cnt
+WHERE rnk = 1
+
+-- ================================================ SOLUTION 4 ==========================================================================
+-- Window Function
+-- GROUP BY OVER USING PARTITION since we are counting the user_id so can't select and count in partition by
+
+-- Union all requester and accepter IDs into one column to represent a "friend".
+WITH all_friends AS (
+    SELECT requester_id AS id FROM RequestAccepted
+    UNION ALL
+    SELECT accepter_id AS id FROM RequestAccepted
+),
+ranked_friends_cnt AS(
+    SELECT
+        id,
+        COUNT(*) AS num,
+        RANK() OVER (ORDER BY COUNT(*) DESC) as rnk
+    FROM
+        all_friends
+    GROUP BY id)
+
+SELECT
+    id,
+    num
+FROM
+    ranked_friends_cnt
+WHERE rnk = 1

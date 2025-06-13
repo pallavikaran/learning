@@ -25,7 +25,7 @@ Siamese	            5.8	            5.5
 SELECT
     breed,
     AVG(weight) AS average_weight,
-    AVG(weight) FILTER (where age > 1) AS average_old_weight
+    AVG(weight) FILTER (WHERE age > 1) AS average_old_weight
 FROM
     cats
 GROUP BY
