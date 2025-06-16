@@ -44,17 +44,17 @@ Here's a detailed strategy tailored to your stack and healthcare context:
     Batch writes: Buffer data before writing to Snowflake or Redshift (e.g., Firehose with buffering hints).
     
 ✅ **Snowflake/Redshift**
-**Data modeling**: Use star/snowflake schema with denormalized fact tables when possible.
+-**Data modeling**: Use star/snowflake schema with denormalized fact tables when possible.
 
-**Partitioning & Clustering**:
+-**Partitioning & Clustering**:
 
-**Snowflake**: Use clustering keys for large tables with predictable access patterns.
+-**Snowflake**: Use clustering keys for large tables with predictable access patterns.
 
-**Redshift**: Use sort keys and distribution styles smartly.
+-**Redshift**: Use sort keys and distribution styles smartly.
 
-**Materialized views**: For frequently accessed aggregates.
+-**Materialized views**: For frequently accessed aggregates.
 
-**Query optimization**: Use EXPLAIN and monitor query performance via Redshift/Snowflake Query Profile.
+-**Query optimization**: Use EXPLAIN and monitor query performance via Redshift/Snowflake Query Profile.
         
 ✅ **ETL / ELT with Python + SQL**
 - Use dbt to manage transformations, enforce quality checks, and document models.
