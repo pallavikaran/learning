@@ -32,7 +32,7 @@ Here's a detailed strategy tailored to your stack and healthcare context:
     - **Column- and row-level security**: Implement in Snowflake or Redshift for sensitive data access control.
   
 - ✅ **Auditing**
-    - ** Access logs**: Enable query history logging in Snowflake/Redshift.
+    - **Access logs**: Enable query history logging in Snowflake/Redshift.
     - **Data lineage**: Use dbt + tools like OpenLineage or DataHub to trace where data comes from.
   
 - ✅ **Data Cataloging**
