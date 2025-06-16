@@ -40,12 +40,11 @@ Here's a detailed strategy tailored to your stack and healthcare context:
 
 🚀 3. **Performance Optimization**
 ✅ **Kinesis + Ingestion Layer**
-    Shard tuning: Match shard count to expected throughput.
-    Batch writes: Buffer data before writing to Snowflake or Redshift (e.g., Firehose with buffering hints).
-    
-✅ **Snowflake/Redshift**
--**Data modeling**: Use star/snowflake schema with denormalized fact tables when possible.
+- Shard tuning: Match shard count to expected throughput.
+- Batch writes: Buffer data before writing to Snowflake or Redshift (e.g., Firehose with buffering hints).
 
+✅ **Snowflake/Redshift**
+- **Data modeling**: Use star/snowflake schema with denormalized fact tables when possible.
 - **Partitioning & Clustering**
 - **Snowflake**: Use clustering keys for large tables with predictable access patterns.
 - **Redshift**: Use sort keys and distribution styles smartly.
