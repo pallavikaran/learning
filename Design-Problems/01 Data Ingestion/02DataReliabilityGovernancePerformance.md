@@ -6,37 +6,37 @@ Here's a detailed strategy tailored to your stack and healthcare context:
 
 🛡️ 1. **Data Reliability**
 - ✅ **Ingestion (Kinesis, Python, AWS Lambda)**
-    Exactly-once or at-least-once delivery: Use Kinesis with checkpointing via Lambda or Kinesis Data Firehose.
-    Schema validation at ingestion: Validate payloads using tools like pydantic, Marshmallow, or JSON Schema.
-    Dead Letter Queues (DLQ): Route bad messages for later inspection (e.g., AWS SQS or S3 buckets).
+    - **Exactly-once or at-least-once delivery**: Use Kinesis with checkpointing via Lambda or Kinesis Data Firehose.
+    - **Schema validation at ingestion**: Validate payloads using tools like pydantic, Marshmallow, or JSON Schema.
+    - **Dead Letter Queues (DLQ)**: Route bad messages for later inspection (e.g., AWS SQS or S3 buckets).
   
 - ✅ **Storage (Snowflake / Redshift)**
-    Use staging tables: Load into staging layers before transforming into production models.
-    Row-level checks: Validate record counts, duplicates, NULLs, and out-of-range values.
+    - **Use staging tables**: Load into staging layers before transforming into production models.
+    - **Row-level checks**: Validate record counts, duplicates, NULLs, and out-of-range values.
   
 - ✅ **Monitoring & Alerting**
-    Data quality checks: Implement with Great Expectations or dbt tests.
-    Logging: Centralize logs in AWS CloudWatch or use an ELK stack.
-    Anomaly detection: Monitor data freshness, volume changes, and schema drift using tools like Monte Carlo or Datafold.
+    - **Data quality checks**: Implement with Great Expectations or dbt tests.
+    - **Logging**: Centralize logs in AWS CloudWatch or use an ELK stack.
+    - **Anomaly detection**: Monitor data freshness, volume changes, and schema drift using tools like Monte Carlo or Datafold.
   
 
 🔒 2. **Data Governance (Critical for Healthcare Compliance)**
 - ✅ **Compliance (HIPAA, HITRUST)**
-    Data classification: Tag data fields as PHI/non-PHI.
-    Encryption:
-        At rest: Enable Snowflake's and Redshift’s built-in encryption.
-        In transit: Enforce TLS for all connections (Kinesis, Python clients, etc.)
+    - **Data classification**: Tag data fields as PHI/non-PHI.
+    - **Encryption**:
+        - At rest: Enable Snowflake's and Redshift’s built-in encryption.
+        - In transit: Enforce TLS for all connections (Kinesis, Python clients, etc.)
   
 - ✅ **Access Control**
-    IAM roles & policies: Enforce least-privilege access using AWS IAM.
-    Column- and row-level security: Implement in Snowflake or Redshift for sensitive data access control.
+    - **IAM roles & policies**: Enforce least-privilege access using AWS IAM.
+    - **Column- and row-level security**: Implement in Snowflake or Redshift for sensitive data access control.
   
 - ✅ **Auditing**
-    Access logs: Enable query history logging in Snowflake/Redshift.
-    Data lineage: Use dbt + tools like OpenLineage or DataHub to trace where data comes from.
+    - ** Access logs**: Enable query history logging in Snowflake/Redshift.
+    - **Data lineage**: Use dbt + tools like OpenLineage or DataHub to trace where data comes from.
   
 - ✅ **Data Cataloging**
-    Use AWS Glue Data Catalog or integrate with Apache Atlas to define data assets and ownership.
+    - Use AWS Glue Data Catalog or integrate with Apache Atlas to define data assets and ownership.
 
 🚀 3. **Performance Optimization**
 ✅ **Kinesis + Ingestion Layer**
