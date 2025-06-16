@@ -46,15 +46,11 @@ Here's a detailed strategy tailored to your stack and healthcare context:
 ✅ **Snowflake/Redshift**
 -**Data modeling**: Use star/snowflake schema with denormalized fact tables when possible.
 
--**Partitioning & Clustering**:
-
--**Snowflake**: Use clustering keys for large tables with predictable access patterns.
-
--**Redshift**: Use sort keys and distribution styles smartly.
-
--**Materialized views**: For frequently accessed aggregates.
-
--**Query optimization**: Use EXPLAIN and monitor query performance via Redshift/Snowflake Query Profile.
+- **Partitioning & Clustering**
+- **Snowflake**: Use clustering keys for large tables with predictable access patterns.
+- **Redshift**: Use sort keys and distribution styles smartly.
+- **Materialized views**: For frequently accessed aggregates.
+- **Query optimization**: Use EXPLAIN and monitor query performance via Redshift/Snowflake Query Profile.
         
 ✅ **ETL / ELT with Python + SQL**
 - Use dbt to manage transformations, enforce quality checks, and document models.
