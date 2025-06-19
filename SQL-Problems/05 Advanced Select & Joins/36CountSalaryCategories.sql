@@ -75,3 +75,49 @@ RIGHT JOIN
     categories
 ON cte.salary_category = categories.category
 GROUP BY categories.category;
+
+
+-- ================================================ SOLUTION 2 =========================================================
+
+WITH categorized AS (
+    SELECT
+        account_id,
+        income,
+        CASE
+            WHEN income < 20000 THEN 'Low Salary'
+            WHEN income <= 50000 THEN 'Average Salary'
+            ELSE 'High Salary'
+        END AS category
+),
+category_counts AS (
+    SELECT
+        category,
+        COUNT(*) OVER (PARTITION BY category) AS accounts_count
+    FROM categorized
+)
+
+-- Return all categories using UNION ALL with fixed set
+SELECT 'Low Salary' AS category,
+       COALESCE(MAX(accounts_count), 0) AS accounts_count
+FROM
+    category_counts
+WHERE
+    category = 'Low Salary'
+
+UNION ALL
+
+SELECT 'Average Salary',
+       COALESCE(MAX(accounts_count), 0)
+FROM
+    category_counts
+WHERE
+    category = 'Average Salary'
+
+UNION ALL
+
+SELECT 'High Salary',
+       COALESCE(MAX(accounts_count), 0)
+FROM
+    category_counts
+WHERE
+    category = 'High Salary';

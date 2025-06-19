@@ -79,3 +79,39 @@ JOIN
 ON m.reports_to = e.employee_id
 GROUP BY e.employee_id, e.name
 ORDER BY e.employee_id
+
+-- ================================================ SOLUTION 2 =========================================================
+-- Window Function
+
+-- Grouping employees by reports_to (i.e. their manager)
+-- Using window functions to count and average the direct reports for each manager.
+WITH report_data AS(
+    SELECT
+        reports_to AS manager_id,
+        COUNT(reports_to) OVER (PARTITION BY reports_to) AS reports_count,
+        ROUND(AVG(age) OVER (PARTITION BY reports_to)) AS average_age
+    FROM
+        Employees
+    WHERE
+        reports_to IS NOT NULL
+),
+deduped_report_data AS (
+    SELECT
+        DISTINCT manager_id,
+        reports_count,
+        average_age
+    FROM report_data
+)
+-- Joining back with the original table to get the manager's name.
+
+SELECT
+    e.employee_id,
+    e.name,
+    d.reports_count,
+    d.average_age
+FROM
+    deduped_report_data d
+JOIN
+    Employees e
+ON d.manager_id = e.employee_id
+ORDER BY e.employee_id

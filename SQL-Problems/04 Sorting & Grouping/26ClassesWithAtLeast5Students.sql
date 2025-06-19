@@ -50,3 +50,16 @@ FROM Courses
 GROUP BY class
 HAVING COUNT(DISTINCT student) > 4
 
+-- ================================================ SOLUTION 2 =========================================================
+SELECT
+    DISTINCT class
+FROM
+    (SELECT
+        class,
+        COUNT(student) OVER (PARTITION BY class) AS cnt
+    FROM
+        Courses
+    ) as cte
+WHERE
+    cnt >= 5
+

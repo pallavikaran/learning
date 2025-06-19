@@ -84,3 +84,23 @@ LEFT JOIN
     cte c
 ON p.product_id =  c.product_id
 WHERE p.change_date = c.max_change_date OR c.product_id is null
+
+-- ================================================ SOLUTION 3 =========================================================
+-- Window Function
+WITH prdct_lst AS (
+    SELECT
+        product_id,
+        new_price,
+        ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY change_date DESC) AS rnk -- to assign rank per product_id ordered by latest change_date
+    FROM Products
+    WHERE change_date <= '2019-08-16')
+
+SELECT
+    dist_products.product_id,
+    COALESCE(pl.new_price, 10) as price
+FROM
+    prdct_lst pl
+RIGHT JOIN
+    (SELECT DISTINCT product_id FROM Products) as dist_products
+ON pl.product_id = dist_products.product_id
+AND pl.rnk = 1 -- WHERE pl.rnk = 1 Will exclude products that have no price changes before '2019-08-16', because in those cases pl.rnk is NULL, and NULL = 1 evaluates to FALSE

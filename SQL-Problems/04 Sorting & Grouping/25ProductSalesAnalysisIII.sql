@@ -60,3 +60,24 @@ JOIN (
 ON s.product_id = fs.product_id
 AND s.year = fs.first_year
 
+WITH first_year_per_product AS (
+    SELECT
+        product_id,
+        year,
+        quantity,
+        price,
+        MIN(year) OVER (PARTITION BY product_id) AS first_year
+    FROM
+        Sales
+)
+-- ================================================ SOLUTION 2 =========================================================
+k
+SELECT
+    product_id,
+    first_year,
+    quantity,
+    price
+FROM
+    first_year_per_product
+WHERE
+    year = first_year

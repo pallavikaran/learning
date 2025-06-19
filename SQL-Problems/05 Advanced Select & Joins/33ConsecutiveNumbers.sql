@@ -45,3 +45,21 @@ WHERE l1.id = l2.id + 1 AND l2.id = l3.id + 1
 AND l1.num = l2.num
 AND l1.num = l3.num
 
+-- ================================================ SOLUTION 2 =========================================================
+-- Window Function
+
+WITH cte AS (
+    SELECT
+        id,
+        LEAD(num) OVER (ORDER BY id ASC) AS lead_no,
+        num,
+        LAG(num) OVER (ORDER BY id ASC) AS lag_no
+    FROM
+        Logs)
+
+SELECT
+    DISTINCT num AS ConsecutiveNums
+FROM
+    cte
+WHERE lead_no = num
+AND num = lag_no

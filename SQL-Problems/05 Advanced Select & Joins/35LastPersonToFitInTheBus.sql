@@ -74,4 +74,24 @@ WHERE running_total <= 1000
 ORDER BY Turn DESC
 LIMIT 1;
 
+-- ================================================ SOLUTION 2 =========================================================
+WITH cte AS (
+    SELECT
+        person_id,
+        person_name,
+        weight,
+        turn,
+        SUM(weight) OVER (ORDER BY turn ASC) AS running_total
+    FROM
+        Queue
+    ORDER BY turn ASC)
 
+SELECT
+    person_name
+FROM
+    cte
+WHERE running_total <= 1000
+ORDER BY turn DESC
+LIMIT 1
+
+-- ================================================ SOLUTION 3 =========================================================
