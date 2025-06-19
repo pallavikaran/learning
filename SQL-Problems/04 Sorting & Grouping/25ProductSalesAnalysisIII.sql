@@ -71,7 +71,7 @@ WITH first_year_per_product AS (
         Sales
 )
 -- ================================================ SOLUTION 2 =========================================================
-k
+
 SELECT
     product_id,
     first_year,
